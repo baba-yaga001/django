@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group col-md-2">
+        <input class="form-control" type="text" name="name" placeholder="Movie name"><br>
+    </div>
+    <div class="form-group col-md-2">
+        <input class="form-control" type="text" name="desc" placeholder="Description"><br>
+    </div>
+    <div class="form-group col-md-2">
+        <input class="form-control" type="text" name="year" placeholder="Release year"><br>
+    </div>
+    <div class="custom-file">
+        <div class="form-group col-md-2">
+            <input type="file" class="custom-file-input" id="customFile">
+            <label class="custom-file-label" for="customFile">Choose file</label>
+        </div>
+    </div>
+    <input class="btn btn-success" type="submit" value="Save"><br>
+</form>
+{% endblock %}

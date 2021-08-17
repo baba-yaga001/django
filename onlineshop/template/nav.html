@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Shopee</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <div class="nav-item dropdown {% if 'shopee' in request.path %} active {% endif %}">
+            <a class="nav-link dropdown-toggle" role="button" id="navbarDropdown" data-bs-toggle="#dropdown" aria-expanded="false"><i class="fa fa-bars" aria-hidden="true"></i>
+            <!--<span class="caret"></span></button>-->
+            </a>
+            <ul class="dropdown-menu"  aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">All products</a></li>
+                {% for cat in links %}
+              <li><a class="dropdown-item" href="{{cat.get_url}}">{{cat.name}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'shopee:allProCat' %}"><i class="fa fa-home" aria-hidden="true"></i></a>
+        </li>
+        {% if item_count > 0 %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'cart:cart_details' %}" tabindex="-1"><i class="fa fa-cart-plus" aria-hidden="true"></i>({{item_count}})</a>
+        </li>
+        {% endif %}
+      </ul>
+      <form class="d-flex" action="{% url 'search:searchRes' %}" method="get">
+        {% csrf_token %}
+        <input class="form-control me-2" type="search" placeholder="Search" name="q" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+      </form>
+    </div>
+  </div>
+</nav>
