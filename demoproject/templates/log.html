@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+    <style>
+
+        body{
+                margin: 100px;
+                text-align: center;
+                align: center;
+                background-color:gray
+            }
+
+        input[type=text],[type=password],[type=number],[type=email]{
+                width: 20%;
+                margin: 8px 0;
+                padding: 7px 10px;
+                display: inline-block;
+                border:1px solid #ccc;
+                box-sizing: border-box;
+             }
+        label{
+
+                margin: 4 5px;
+                padding: 10px 7px
+
+        }
+        input[type=submit]{
+
+                background-color: black;
+                color :white;
+                font-size: 16px;
+                padding: 10px 24px;
+                border-radius: 12px;
+
+        }
+    </style>
+
+</head>
+<body>
+
+<h2>Login</h2>
+
+<form method="post" action="welcome">
+    {% csrf_token %}
+    <input type="text" name="uname" placeholder="Username"><br>
+    <input type="password" name="pass" placeholder="Password"><br>
+    <input type="submit" value="Login">
+</form>
+{% for msg in messages %}
+{{msg}}
+{% endfor %}
+</body>
+</html>
